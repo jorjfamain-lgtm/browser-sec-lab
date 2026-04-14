@@ -27,7 +27,7 @@ rm -rf node_modules package-lock.json
 
 # ۵. نصب پکیج‌های NPM و بیلد فرانت‌اند
 echo "[+] Installing NPM dependencies..."
-npm config set registry ${NPM_REGISTRY}
+npm config set registry "http://192.168.1.201:8081/repository/npm-group/"
 npm install
 
 echo "[+] Building frontend assets..."
