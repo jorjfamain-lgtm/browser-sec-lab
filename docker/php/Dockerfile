@@ -34,7 +34,7 @@ RUN curl -fsSLO "${NODE_REGISTRY}/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x
 # تنظیم ریجستری اختصاصی NPM
 RUN npm config set registry ${NPM_REGISTRY}
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
-RUN install-php-extensions zip bcmath
+RUN install-php-extensions zip bcmath pdo pdo_mysql
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
