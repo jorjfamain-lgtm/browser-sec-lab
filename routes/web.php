@@ -22,3 +22,10 @@ Route::get('/set-cookie', function () {
     return response('Cookie set!')
         ->cookie('secret_token', 'Bypass-12345', 60, null, null, false, false);
 })->name('vulnerability.cookie');
+
+
+// روت دریافت اطلاعات سرقت شده (معمولاً در دنیای واقعی روی سرور مهاجم است)
+Route::get('/stealer', [VulnerabilityController::class, 'logStolenData'])->name('vulnerability.stealer');
+
+// پنل مشاهده لاگ‌های سرقت شده
+Route::get('/hacker-panel', [VulnerabilityController::class, 'viewLogs'])->name('vulnerability.logs');
