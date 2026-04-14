@@ -1,36 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XSS Lab - Browser Security</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>آزمایشگاه XSS | Browser Security</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>body { font-family: Tahoma, sans-serif; }</style>
 </head>
-<body class="bg-gray-900 text-white font-sans p-10">
+<body class="bg-slate-900 text-slate-100 min-h-screen p-8">
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold text-red-500 mb-6 border-b border-red-500 pb-2">آزمایشگاه Reflected XSS</h1>
 
-        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 shadow-xl mb-6">
+        <div class="flex items-center gap-4 mb-8 border-b border-red-500/30 pb-4">
+            <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-red-500">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+            </div>
+            <div>
+                <h1 class="text-3xl font-bold text-red-500">آزمایشگاه Reflected XSS</h1>
+                <p class="text-slate-400 mt-1">تزریق کد مخرب و دور زدن سیاست‌های امنیتی مرورگر (CSP)</p>
+            </div>
+        </div>
+
+        <!-- فرم تزریق پی‌لود -->
+        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-2xl mb-8">
             <form action="{{ route('vulnerability.xss') }}" method="GET">
-                <label for="payload" class="block text-sm font-medium text-gray-300 mb-2">پی‌لود مخرب (Payload) خود را اینجا وارد کنید:</label>
+                <label for="payload" class="block text-sm font-semibold text-slate-300 mb-3">پی‌لود مخرب (Payload) خود را اینجا وارد کنید:</label>
 
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-5">
                     <textarea
                         name="payload"
                         id="payload"
-                        rows="3"
-                        class="w-full bg-gray-900 text-green-400 border border-gray-600 rounded-md p-3 focus:ring-red-500 focus:border-red-500 font-mono text-left"
+                        rows="4"
+                        class="w-full bg-slate-950 text-green-400 border border-slate-600 rounded-xl p-4 focus:ring-2 focus:ring-red-500 focus:border-red-500 font-mono text-left outline-none transition-all shadow-inner"
                         dir="ltr"
-                        placeholder="<script>alert(1)</script>"
-                    >{{ $payload ?? '' }}</textarea>
+                        placeholder="<script>alert('Hacked!');</script>"
+                    >{{ request('payload') ?? '' }}</textarea>
 
-                    <div class="flex items-center justify-between">
-                        <label class="flex items-center space-x-2 space-x-reverse cursor-pointer">
-                            <input type="checkbox" name="disable_csp" value="1" class="form-checkbox h-5 w-5 text-red-600 rounded bg-gray-700 border-gray-500" {{ request('disable_csp') ? 'checked' : '' }}>
-                            <span class="text-sm text-gray-400">غیرفعال کردن Content-Security-Policy (برای اجرای راحت‌تر اسکریپت)</span>
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
+                        <label class="flex items-center space-x-3 space-x-reverse cursor-pointer group">
+                            <input type="checkbox" name="disable_csp" value="1" class="form-checkbox h-5 w-5 text-red-500 rounded border-slate-500 bg-slate-800 focus:ring-red-500 focus:ring-offset-slate-900" {{ request('disable_csp') ? 'checked' : '' }}>
+                            <span class="text-sm text-slate-400 group-hover:text-slate-200 transition">غیرفعال کردن CSP (برای اجرای راحت‌تر اسکریپت روی مرورگرهای مدرن)</span>
                         </label>
 
-                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition duration-200">
+                        <button type="submit" class="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 px-8 rounded-lg transition duration-200 shadow-lg shadow-red-900/20">
                             اجرای حمله (Execute)
                         </button>
                     </div>
@@ -38,15 +50,20 @@
             </form>
         </div>
 
-        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 shadow-xl">
-            <h2 class="text-xl font-semibold mb-3 text-yellow-400">خروجی سرور (DOM Sink):</h2>
-            <p class="mb-4 text-sm text-gray-400">ورودی شما بدون فیلتر در کادر زیر رندر شده است:</p>
+        <!-- خروجی DOM -->
+        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-2 h-full bg-yellow-500"></div>
+            <h2 class="text-xl font-bold mb-2 text-yellow-500 flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                خروجی سرور (DOM Sink):
+            </h2>
+            <p class="mb-5 text-sm text-slate-400">مرورگر ورودی شما را در کادر زیر به عنوان بخشی از ساختار HTML رندر می‌کند:</p>
 
-            <div class="p-4 bg-gray-700 rounded border border-dashed border-yellow-500 text-yellow-200 min-h-[50px] text-left" dir="ltr">
-                {{-- آسیب‌پذیری ساختاریافته Blade --}}
-                {!! $payload ?? 'خروجی در اینجا نمایش داده می‌شود...' !!}
+            <div class="p-5 bg-slate-900 rounded-xl border border-dashed border-yellow-500/50 text-yellow-100 min-h-[80px] text-left font-mono break-words" dir="ltr">
+                {!! request('payload') ?? '<span class="text-slate-600">خروجی در اینجا نمایش داده می‌شود...</span>' !!}
             </div>
         </div>
+
     </div>
 </body>
 </html>

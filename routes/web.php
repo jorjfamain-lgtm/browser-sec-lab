@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VulnerabilityController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use App\Http\Controllers\UserController;
@@ -39,3 +40,16 @@ Route::middleware(['web', 'auth'])->group(function () {
 Route::post('/update-email', [UserController::class, 'updateEmail'])
     ->withoutMiddleware([VerifyCsrfToken::class])
     ->name('vulnerable.update.email');
+
+
+// ==========================================
+// ۵. آزمایشگاه XSS و سرقت کوکی (Hacker Panel)
+// ==========================================
+// صفحه اصلی آزمایشگاه XSS
+Route::get('/xss', [VulnerabilityController::class, 'xss'])->name('vulnerability.xss');
+
+// روت مخفی هکر برای دریافت کوکی‌های سرقت شده (Stealer)
+Route::get('/stealer', [VulnerabilityController::class, 'logStolenData'])->name('vulnerability.stealer');
+
+// داشبورد هکر برای مشاهده دیتای سرقت شده
+Route::get('/hacker-panel', [VulnerabilityController::class, 'viewLogs'])->name('vulnerability.logs');
