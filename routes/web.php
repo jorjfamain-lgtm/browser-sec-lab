@@ -3,6 +3,7 @@
 use App\Http\Controllers\VulnerabilityController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 // صفحه اصلی برای دسترسی سریع به بخش‌های مختلف
 Route::get('/', function () {
