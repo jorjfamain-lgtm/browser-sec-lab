@@ -1,54 +1,48 @@
 services:
-  # ----------------------------------------
-  # NGINX (Web Server)
-  # ----------------------------------------
+  # وب‌سرور اپلیکیشن اصلی (Victim)
   victim-nginx:
     image: nginx:stable-alpine
     container_name: sec_lab_victim_nginx
     ports:
-      - "58690:80"  # روی سرور پورت 80 باز باشد
+      - "58690:80"
     volumes:
       - ./:/var/www/html:ro
-      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./docker/nginx/victim.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
-      php:
-        condition: service_started
+      - php
     networks:
       - lab_net
     restart: always
 
-  # ----------------------------------------
-  # PHP-FPM (Vulnerable Laravel Core)
-  # ----------------------------------------
+  # هسته پردازشی PHP
   php:
     container_name: sec_lab_php
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile
       args:
-        # اینجا می‌توانید آدرس Nexus داخلی سرور خود را بدهید
         - COMPOSER_REGISTRY=http://192.168.1.201:8081/repository/composer-runflare/
         - LINUX_REGISTRY=http://192.168.1.201:8081/repository/debian-arvan
         - SECURITY_REGISTRY=http://192.168.1.201:8081/repository/debian-arvan-security
         - NPM_REGISTRY=http://192.168.1.201:8081/repository/npm-group/
         - NODE_REGISTRY=http://192.168.1.201:8081/repository/node-dist
     volumes:
-      - ./:/var/www/html:rw
-      - ./docker/nginx/victim.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./:/var/www/html:rw # ولوم اضافی nginx از اینجا حذف شد
     networks:
       - lab_net
     restart: always
 
-# اپلیکیشن دوم: سرور هکر (یک سرور بسیار سبک برای میزبانی پی‌لودها)
+  # اپلیکیشن مهاجم (Hacker)
   attacker-app:
     image: nginx:stable-alpine
     container_name: sec_lab_attacker_nginx
     ports:
-      - "58691:80" # مپ کردن به پورت 8002 سرور
+      - "58691:80"
     volumes:
       - ./hacker_site:/usr/share/nginx/html:ro
     networks:
       - lab_net
+    restart: always
 
 networks:
   lab_net:
