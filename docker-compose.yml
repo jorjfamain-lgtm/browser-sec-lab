@@ -1,7 +1,9 @@
 services:
-  # دیتابیس MariaDB
+  # ----------------------------------------
+  # MariaDB Database
+  # ----------------------------------------
   mariadb:
-    image: mariadb:10.6
+    image: mariadb:10.11
     container_name: sec_lab_db
     environment:
       MYSQL_ROOT_PASSWORD: root_password
@@ -14,7 +16,9 @@ services:
       - lab_net
     restart: always
 
+  # ----------------------------------------
   # وب‌سرور اپلیکیشن اصلی (Victim)
+  # ----------------------------------------
   victim-nginx:
     image: nginx:stable-alpine
     container_name: sec_lab_victim_nginx
@@ -29,18 +33,14 @@ services:
       - lab_net
     restart: always
 
-  # هسته پردازشی PHP
+  # ----------------------------------------
+  # هسته پردازشی PHP (مشترک بین دو سایت)
+  # ----------------------------------------
   php:
     container_name: sec_lab_php
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile
-      args:
-        - COMPOSER_REGISTRY=http://192.168.1.201:8081/repository/composer-runflare/
-        - LINUX_REGISTRY=http://192.168.1.201:8081/repository/debian-arvan
-        - SECURITY_REGISTRY=http://192.168.1.201:8081/repository/debian-arvan-security
-        - NPM_REGISTRY=http://192.168.1.201:8081/repository/npm-group/
-        - NODE_REGISTRY=http://192.168.1.201:8081/repository/node-dist
     volumes:
       - ./:/var/www/html:rw
     depends_on:
@@ -49,14 +49,19 @@ services:
       - lab_net
     restart: always
 
-  # اپلیکیشن مهاجم (Hacker)
+  # ----------------------------------------
+  # وب‌سرور اپلیکیشن مهاجم (Hacker)
+  # ----------------------------------------
   attacker-app:
     image: nginx:stable-alpine
     container_name: sec_lab_attacker_nginx
     ports:
       - "58691:80"
     volumes:
-      - ./hacker_site:/usr/share/nginx/html:ro
+      - ./:/var/www/html:ro # حالا هکر هم به کدهای لاراول دسترسی دارد
+      - ./docker/nginx/hacker.conf:/etc/nginx/conf.d/default.conf:ro # کانفیگ اختصاصی هکر
+    depends_on:
+      - php
     networks:
       - lab_net
     restart: always
