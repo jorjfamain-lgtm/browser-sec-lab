@@ -27,9 +27,9 @@ services:
       dockerfile: ./docker/php/Dockerfile
       args:
         # اینجا می‌توانید آدرس Nexus داخلی سرور خود را بدهید
-        - COMPOSER_REGISTRY=http://192.168.1.201:8081/
-        - LINUX_REGISTRY=http://192.168.1.201:8081/
-        - SECURITY_REGISTRY=http://192.168.1.201:8081/
+        - COMPOSER_REGISTRY=http://192.168.1.201:8081/repository/composer-runflare/
+        - LINUX_REGISTRY=http://192.168.1.201:8081/repository/debian-arvan
+        - SECURITY_REGISTRY=http://192.168.1.201:8081/repository/debian-arvan-security
     volumes:
       - ./:/var/www/html:rw
     networks:
