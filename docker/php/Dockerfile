@@ -1,9 +1,10 @@
 FROM php:8.2-fpm-bookworm
 
-# متغیرهای ریجستری
+# متغیرهای ریجستری (اضافه شدن NPM)
 ARG COMPOSER_REGISTRY="https://mirror-composer.runflare.com"
 ARG LINUX_REGISTRY="http://deb.debian.org/debian"
 ARG SECURITY_REGISTRY="http://security.debian.org/debian-security"
+ARG NPM_REGISTRY="https://registry.npmjs.org"
 
 # تغییر سورس‌های apt
 RUN sed -i "s|http://deb.debian.org/debian|${LINUX_REGISTRY}|g" /etc/apt/sources.list.d/debian.sources \
@@ -21,6 +22,9 @@ RUN apt-get update && apt-get install -y --allow-downgrades --no-install-recomme
     npm \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# === [ تنظیم ریجستری اختصاصی NPM ] ===
+RUN npm config set registry ${NPM_REGISTRY}
+
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 RUN install-php-extensions zip bcmath
 
@@ -30,10 +34,8 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN echo "pcre.jit=0" > /usr/local/etc/php/conf.d/disable-pcre-jit.ini
 
-# === [ بخش جدید: اضافه کردن Entrypoint ] ===
+# اضافه کردن Entrypoint
 COPY ./docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
-# دادن دسترسی اجرا به فایل
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# واگذاری کنترل اجرای کانتینر به اسکریپت ما
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

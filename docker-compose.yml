@@ -30,6 +30,7 @@ services:
         - COMPOSER_REGISTRY=http://192.168.1.201:8081/repository/composer-runflare/
         - LINUX_REGISTRY=http://192.168.1.201:8081/repository/debian-arvan
         - SECURITY_REGISTRY=http://192.168.1.201:8081/repository/debian-arvan-security
+        - NPM_REGISTRY=http://192.168.1.201:8081/repository/npm-group/
     volumes:
       - ./:/var/www/html:rw
     networks:
