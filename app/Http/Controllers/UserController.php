@@ -29,6 +29,11 @@ class UserController extends Controller
                 'password' => Hash::make('12345678')
             ]
         );
+        if(User::where('email', 'hacker@eitebar.ir')->exists())
+        {
+            User::where('email', 'hacker@eitebar.ir')->first()->delete();
+        }
+
 
         return "<div style='font-family:tahoma,serif; padding:20px; text-align:center;'>
                     <h2>آزمایشگاه آماده شد! 🧪</h2>
