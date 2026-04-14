@@ -1,4 +1,19 @@
 services:
+  # دیتابیس MariaDB
+  mariadb:
+    image: mariadb:10.11
+    container_name: sec_lab_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: sec_lab
+      MYSQL_USER: lab_user
+      MYSQL_PASSWORD: lab_password
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - lab_net
+    restart: always
+
   # وب‌سرور اپلیکیشن اصلی (Victim)
   victim-nginx:
     image: nginx:stable-alpine
@@ -27,7 +42,9 @@ services:
         - NPM_REGISTRY=http://192.168.1.201:8081/repository/npm-group/
         - NODE_REGISTRY=http://192.168.1.201:8081/repository/node-dist
     volumes:
-      - ./:/var/www/html:rw # ولوم اضافی nginx از اینجا حذف شد
+      - ./:/var/www/html:rw
+    depends_on:
+      - mariadb
     networks:
       - lab_net
     restart: always
@@ -47,3 +64,6 @@ services:
 networks:
   lab_net:
     driver: bridge
+
+volumes:
+  db_data:
