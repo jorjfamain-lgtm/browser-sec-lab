@@ -24,7 +24,9 @@ class VulnerableHeadersMiddleware
         if ($request->has('allow_framing')) {
             $response->headers->remove('X-Frame-Options');
         } else {
-            $response->headers->set('X-Frame-Options', 'DENY');
+            // برای تست Clickjacking موقتاً این خط را کامنت می‌کنیم تا ریدایرکت‌ها هم مسدود نشوند
+            // $response->headers->set('X-Frame-Options', 'DENY');
+            $response->headers->remove('X-Frame-Options');
         }
 
         // ۳. خاموش کردن محافظت پیش‌فرض XSS
