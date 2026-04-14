@@ -1,7 +1,7 @@
 services:
   # دیتابیس MariaDB
   mariadb:
-    image: mariadb:10.11
+    image: mariadb:10.6
     container_name: sec_lab_db
     environment:
       MYSQL_ROOT_PASSWORD: root_password
