@@ -5,10 +5,10 @@ set -e
 
 echo "[+] Starting Initialization Process..."
 
-# ۱. نصب وابستگی‌های PHP (حل مشکل autoload.php)
-# این دستور پوشه vendor را بر اساس composer.json شما می‌سازد
+# ۱. نصب وابستگی‌های PHP با نادیده گرفتن پکیج‌های Dev و ناهماهنگی فایل لاک
 echo "[+] Installing PHP dependencies via Composer..."
-composer install --no-interaction --prefer-dist --optimize-autoloader
+composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+
 
 # ۲. پاکسازی node_modules قدیمی (برای جلوگیری از تداخل لینوکس/ویندوز)
 echo "[+] Cleaning old node_modules..."
