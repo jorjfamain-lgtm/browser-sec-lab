@@ -18,13 +18,18 @@ RUN apt-get update && apt-get install -y --allow-downgrades --no-install-recomme
     unzip \
     git \
     curl \
-    nodejs \
-    npm \
+    gnupg2 \
+    ca-certificates \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# === [ تنظیم ریجستری اختصاصی NPM ] ===
-RUN npm config set registry ${NPM_REGISTRY}
+# === [ نصب Node.js نسخه 20 ] ===
+# از آنجا که مخازن دبیان نسخه 18 را دارند، نسخه 20 را مستقیم از مخزن رسمی می‌گیریم
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# تنظیم ریجستری اختصاصی NPM شما
+RUN npm config set registry ${NPM_REGISTRY}
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 RUN install-php-extensions zip bcmath
 
