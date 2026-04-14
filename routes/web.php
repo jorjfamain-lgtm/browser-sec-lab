@@ -3,20 +3,24 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VulnerabilityController;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 
 /*
 |--------------------------------------------------------------------------
 | ☠️ دامنه مهاجم (Attacker App) : hackerapp.eitebar.ir
 |--------------------------------------------------------------------------
+| این بخش به عنوان سرور C2 (Command and Control) و میزبان پی‌لودها عمل می‌کند.
 */
 Route::domain('hackerapp.eitebar.ir')->group(function () {
 
     // داشبورد اصلی هکر (لاگ‌های سرقت شده)
     Route::get('/', [VulnerabilityController::class, 'viewLogs'])->name('hacker.home');
     Route::get('/hacker-panel', [VulnerabilityController::class, 'viewLogs'])->name('vulnerability.logs');
+
+    // روت مخفی هکر برای دریافت کوکی‌های سرقت شده (Stealer)
     Route::get('/stealer', [VulnerabilityController::class, 'logStolenData'])->name('vulnerability.stealer');
 
-    // [جدید]: صفحه‌ای که هکر برای فریب کاربر می‌سازد (حاوی فرم مخفی CSRF)
+    // صفحه‌ای که فرم مخفی CSRF را به سمت قربانی شلیک می‌کند
     Route::get('/csrf-attack', function () {
         return view('hacker.csrf-exploit');
     })->name('hacker.csrf.exploit');
@@ -27,6 +31,7 @@ Route::domain('hackerapp.eitebar.ir')->group(function () {
 |--------------------------------------------------------------------------
 | 🛡️ دامنه قربانی (Victim App) : webapp.kr-rezvan.ir
 |--------------------------------------------------------------------------
+| میزبان اطلاعات حساس کاربری که هدف حملات Cross-Origin قرار می‌گیرد.
 */
 Route::domain('webapp.kr-rezvan.ir')->group(function () {
 
@@ -44,8 +49,10 @@ Route::domain('webapp.kr-rezvan.ir')->group(function () {
         // پروفایل کاربر
         Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
 
-        // هدف حمله CSRF (اکنون کاملاً توسط میدل‌ویر CSRF محافظت می‌شود)
-        Route::post('/update-email', [UserController::class, 'updateEmail'])->name('vulnerable.update.email');
+        // 🔓 هدف حمله CSRF (پروتکشن لایه کد کاملاً حذف شده است)
+        Route::post('/update-email', [UserController::class, 'updateEmail'])
+            ->withoutMiddleware([VerifyCsrfToken::class])
+            ->name('vulnerable.update.email');
 
         // آزمایشگاه XSS (کاربر لاگین شده این صفحه را می‌بیند)
         Route::get('/xss', [VulnerabilityController::class, 'xss'])->name('vulnerability.xss');
