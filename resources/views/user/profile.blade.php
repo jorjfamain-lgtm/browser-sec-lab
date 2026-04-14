@@ -3,63 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ورود به حساب | WebApp Victim</title>
-    <!-- لود کردن Tailwind CSS از طریق Vite -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>داشبورد کاربری | WebApp Victim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: Tahoma, sans-serif; }
     </style>
 </head>
-<body class="bg-slate-50 flex items-center justify-center min-h-screen">
+<body class="bg-slate-100 min-h-screen">
 
-    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border-t-4 border-indigo-500">
-
-        <!-- لوگو و هدر -->
-        <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-500 mb-4">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                </svg>
+    <nav class="bg-white shadow-sm border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3">
+                    <span class="bg-indigo-600 text-white px-3 py-1.5 rounded-md font-bold tracking-widest text-xs">VICTIM APP</span>
+                    <span class="text-lg font-bold text-slate-800">پورتال کاربری</span>
+                </div>
+                <a href="{{ route('logout') }}" class="text-sm font-medium text-slate-500 hover:text-red-600 transition flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-lg border border-slate-200">
+                    خروج از سیستم
+                </a>
             </div>
-            <h2 class="text-2xl font-bold text-slate-800">ورود به سیستم</h2>
-            <p class="text-sm text-slate-500 mt-2">جهت دسترسی به پنل کاربری وارد شوید</p>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-slate-900">سلام، {{ $user->name }} 👋</h1>
+            <p class="mt-2 text-slate-600">اطلاعات هویتی شما در این پورتال امن نگهداری می‌شود.</p>
         </div>
 
-        <!-- نمایش خطاها -->
-        @if($errors->any())
-            <div class="bg-red-50 border-r-4 border-red-500 text-red-700 p-4 rounded mb-6" role="alert">
-                <p class="text-sm font-medium">{{ $errors->first() }}</p>
-            </div>
-        @endif
-
-        <!-- فرم -->
-        <form action="{{ route('login.submit') }}" method="POST" class="space-y-5">
-            @csrf
-
-            <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">آدرس ایمیل</label>
-                <input type="email" name="email" value="victim@webapp.kr-rezvan.ir" required
-                       class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-left" dir="ltr">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="px-6 py-5 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
+                <h3 class="text-lg font-medium text-slate-900">اطلاعات حساب</h3>
+                <span class="px-3 py-1 text-xs font-bold bg-green-100 text-green-800 rounded-full">احراز هویت شده</span>
             </div>
 
-            <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">رمز عبور</label>
-                <input type="password" name="password" value="12345678" required
-                       class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-left" dir="ltr">
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                        <span class="block text-xs font-bold text-slate-500 mb-2">نام کامل</span>
+                        <span class="block text-lg text-slate-900 font-bold">{{ $user->name }}</span>
+                    </div>
+
+                    <!-- بخش حساس که هکر هدف می‌گیرد -->
+                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 relative overflow-hidden shadow-inner">
+                        <div class="absolute top-0 right-0 w-2 h-full bg-indigo-500"></div>
+                        <span class="block text-xs font-bold text-indigo-600 mb-2">آدرس ایمیل (هدف CSRF)</span>
+                        <span class="block text-xl text-indigo-900 font-bold" dir="ltr">{{ $user->email }}</span>
+                    </div>
+                </div>
             </div>
-
-            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
-                ورود به داشبورد
-            </button>
-        </form>
-
-        <!-- لینک راه‌اندازی -->
-        <div class="mt-8 text-center text-sm text-slate-500 border-t pt-4">
-            پایگاه داده هنوز مقداردهی نشده؟
-            <a href="{{ route('setup.lab') }}" class="text-indigo-600 hover:text-indigo-800 font-medium transition">کلیک کنید</a>
         </div>
-
-    </div>
+    </main>
 
 </body>
 </html>
