@@ -38,6 +38,16 @@ services:
       - lab_net
     restart: always
 
+# اپلیکیشن دوم: سرور هکر (یک سرور بسیار سبک برای میزبانی پی‌لودها)
+  hacker-app:
+    image: nginx:alpine
+    container_name: sec_lab_hacker
+    volumes:
+      - ./hacker_files:/usr/share/nginx/html:ro
+    networks:
+      - lab_net
+    restart: always
+
 networks:
   lab_net:
     driver: bridge
