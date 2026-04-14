@@ -32,7 +32,14 @@ Route::get('/stealer', [VulnerabilityController::class, 'logStolenData'])->name(
 Route::get('/hacker-panel', [VulnerabilityController::class, 'viewLogs'])->name('vulnerability.logs');
 
 
-Route::post('/update-email', function (Illuminate\Http\Request $request) {
-    // در دنیای واقعی اینجا ایمیل در دیتابیس آپدیت می‌شود
-    return "ایمیل با موفقیت به " . $request->email . " تغییر یافت. (حمله موفق!)";
+Route::post('/update-email', function (Request $request) {
+    // در اینجا فرض می‌کنیم کاربر لاگین است و ایمیلش آپدیت می‌شود
+    $newEmail = $request->input('email');
+
+    // شبیه‌سازی عملیات دیتابیس
+    return response()->json([
+        'status' => 'success',
+        'message' => "ایمیل شما با موفقیت به $newEmail تغییر یافت!",
+        'user_session' => session()->getId() // برای تست اینکه آیا کوکی ارسال شده یا نه
+    ]);
 })->withoutMiddleware([VerifyCsrfToken::class]);
