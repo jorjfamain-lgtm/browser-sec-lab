@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\VulnerabilityController;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
 // صفحه اصلی برای دسترسی سریع به بخش‌های مختلف
@@ -29,3 +30,9 @@ Route::get('/stealer', [VulnerabilityController::class, 'logStolenData'])->name(
 
 // پنل مشاهده لاگ‌های سرقت شده
 Route::get('/hacker-panel', [VulnerabilityController::class, 'viewLogs'])->name('vulnerability.logs');
+
+
+Route::post('/update-email', function (Illuminate\Http\Request $request) {
+    // در دنیای واقعی اینجا ایمیل در دیتابیس آپدیت می‌شود
+    return "ایمیل با موفقیت به " . $request->email . " تغییر یافت. (حمله موفق!)";
+})->withoutMiddleware([VerifyCsrfToken::class]);
