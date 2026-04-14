@@ -5,8 +5,12 @@ set -e
 
 echo "[+] Starting Initialization Process..."
 
+# پاک کردن کش‌های قدیمی و تداخل‌های باینری ویندوز/لینوکس
+echo "[+] Cleaning old node_modules to prevent native binding conflicts..."
+rm -rf node_modules package-lock.json
+
 # بررسی و نصب پکیج‌های NPM
-echo "[+] Installing NPM dependencies..."
+echo "[+] Installing NPM dependencies (Node 20+)..."
 npm install
 
 # کامپایل کردن فایل‌های Tailwind و Alpine برای پروداکشن
