@@ -26,6 +26,9 @@ Route::domain('hackerapp.eitebar.ir')->group(function () {
     })->name('hacker.csrf.exploit');
 
     // New Route: Clickjacking Exploit Page
+    Route::get('/clickjacking', function () {
+        return view('hacker.clickjacking');
+    })->name('hacker.clickjacking');
 
 });
 
