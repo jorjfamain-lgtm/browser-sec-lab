@@ -1,22 +1,27 @@
 #!/bin/bash
 
-# توقف اجرا در صورت بروز خطای بحرانی
+# توقف در صورت بروز خطا
 set -e
 
 echo "[+] Starting Initialization Process..."
 
-# پاک کردن کش‌های قدیمی و تداخل‌های باینری ویندوز/لینوکس
-echo "[+] Cleaning old node_modules to prevent native binding conflicts..."
+# ۱. نصب وابستگی‌های PHP (حل مشکل autoload.php)
+# این دستور پوشه vendor را بر اساس composer.json شما می‌سازد
+echo "[+] Installing PHP dependencies via Composer..."
+composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# ۲. پاکسازی node_modules قدیمی (برای جلوگیری از تداخل لینوکس/ویندوز)
+echo "[+] Cleaning old node_modules..."
 rm -rf node_modules package-lock.json
 
-# بررسی و نصب پکیج‌های NPM
-echo "[+] Installing NPM dependencies (Node 20+)..."
+# ۳. نصب پکیج‌های NPM از نکسوس
+echo "[+] Installing NPM dependencies..."
 npm install
 
-# کامپایل کردن فایل‌های Tailwind و Alpine برای پروداکشن
+# ۴. بیلد کردن فرانت‌اِند (Tailwind/Vite)
 echo "[+] Building frontend assets..."
 npm run build
 
-# راه‌اندازی سرویس اصلی (PHP-FPM)
+# ۵. اجرای سرویس اصلی
 echo "[+] Starting PHP-FPM for Browser-Sec-Lab..."
 exec php-fpm
