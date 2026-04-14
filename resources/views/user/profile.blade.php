@@ -32,7 +32,7 @@
             <p class="mt-2 text-slate-600">اطلاعات هویتی شما در این پورتال امن نگهداری می‌شود.</p>
         </div>
 
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-8">
             <div class="px-6 py-5 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
                 <h3 class="text-lg font-medium text-slate-900">اطلاعات حساب</h3>
                 <span class="px-3 py-1 text-xs font-bold bg-green-100 text-green-800 rounded-full">احراز هویت شده</span>
@@ -52,6 +52,22 @@
                         <span class="block text-xl text-indigo-900 font-bold" dir="ltr">{{ $user->email }}</span>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Delete Account Section -->
+        <div class="bg-white rounded-2xl shadow-sm border border-red-200 overflow-hidden">
+            <div class="px-6 py-5 border-b border-red-200 bg-red-50 flex justify-between items-center">
+                <h3 class="text-lg font-medium text-red-900">حذف حساب کاربری</h3>
+            </div>
+            <div class="p-6">
+                <p class="text-red-700 mb-4">با حذف حساب کاربری، تمام اطلاعات شما به صورت دائمی پاک خواهد شد. این عمل غیرقابل بازگشت است.</p>
+                <form action="{{ route('profile.destroy') }}" method="POST">
+                    @csrf
+                    <button type="submit" id="target-delete-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200 ease-in-out">
+                        حذف حساب کاربری
+                    </button>
+                </form>
             </div>
         </div>
     </main>

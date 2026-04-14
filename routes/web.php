@@ -55,6 +55,9 @@ Route::domain('webapp.kr-rezvan.ir')->group(function () {
 
         // پروفایل کاربر
         Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+        
+        // حذف حساب کاربری (Clickjacking Target)
+        Route::post('/profile/delete', [UserController::class, 'destroy'])->name('profile.destroy');
 
         // 🔓 هدف حمله CSRF (پروتکشن لایه کد کاملاً حذف شده است)
         Route::post('/update-email', [UserController::class, 'updateEmail'])
