@@ -2,9 +2,9 @@ services:
   # ----------------------------------------
   # NGINX (Web Server)
   # ----------------------------------------
-  victim-nginx:
+  nginx:
     image: nginx:stable-alpine
-    container_name: sec_lab_victim_nginx
+    container_name: sec_lab_nginx
     ports:
       - "58690:80"  # روی سرور پورت 80 باز باشد
     volumes:
@@ -43,7 +43,7 @@ services:
     image: nginx:stable-alpine
     container_name: sec_lab_attacker_nginx
     ports:
-      - "58691:80" # مپ کردن به پورت 8002 سرور
+      - "8002:80" # مپ کردن به پورت 8002 سرور
     volumes:
       - ./hacker_site:/usr/share/nginx/html:ro
     networks:
