@@ -2,9 +2,9 @@ services:
   # ----------------------------------------
   # NGINX (Web Server)
   # ----------------------------------------
-  nginx:
+  victim-nginx:
     image: nginx:stable-alpine
-    container_name: sec_lab_nginx
+    container_name: sec_lab_victim_nginx
     ports:
       - "58690:80"  # روی سرور پورت 80 باز باشد
     volumes:
@@ -39,14 +39,15 @@ services:
     restart: always
 
 # اپلیکیشن دوم: سرور هکر (یک سرور بسیار سبک برای میزبانی پی‌لودها)
-  hacker-app:
-    image: nginx:alpine
-    container_name: sec_lab_hacker
+  attacker-app:
+    image: nginx:stable-alpine
+    container_name: sec_lab_attacker_nginx
+    ports:
+      - "58691:80" # مپ کردن به پورت 8002 سرور
     volumes:
-      - ./hacker_files:/usr/share/nginx/html:ro
+      - ./hacker_site:/usr/share/nginx/html:ro
     networks:
       - lab_net
-    restart: always
 
 networks:
   lab_net:
