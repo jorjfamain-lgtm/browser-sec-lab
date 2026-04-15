@@ -53,7 +53,8 @@ Route::domain('blog.webapp.kr-rezvan.ir')
 |--------------------------------------------------------------------------
 | میزبان اطلاعات حساس کاربری که هدف حملات Cross-Origin قرار می‌گیرد.
 */
-Route::domain('webapp.kr-rezvan.ir')->group(function () {
+Route::domain('webapp.kr-rezvan.ir')->withoutMiddleware([VulnerableHeadersMiddleware::class])
+    ->group(function () {
 
     Route::get('/', [UserController::class, 'home'])->name('home');
     Route::get('/setup-lab', [UserController::class, 'setupLab'])->name('setup.lab');
