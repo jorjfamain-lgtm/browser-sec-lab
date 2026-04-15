@@ -7,12 +7,32 @@
     <style>
         body { font-family: sans-serif; background: #f4f4f5; text-align: center; padding-top: 50px; }
         .bait-container { position: relative; width: 600px; height: 400px; margin: 0 auto; border: 2px dashed #a1a1aa; background: #fff; overflow: hidden; }
-        .bait-button { position: absolute; top: 150px; left: 200px; width: 200px; height: 50px; background: #3b82f6; color: white; font-size: 18px; border: none; border-radius: 5px; cursor: pointer; z-index: 1; }
+        .bait-button {
+            position: absolute;
+            top: 175px;
+            left: 220px;
+            width: 200px;
+            height: 50px;
+            background-color: #22c55e;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        /* The malicious iframe loading the victim site */
         .malicious-iframe {
             position: absolute;
-            width: 1200px; height: 1500px; /* Oversized iframe */
-            top: -400px; left: -150px; /* Adjust these later via DevTools */
-            border: none; z-index: 2; opacity: 0.4;
+            width: 1200px;
+            height: 1500px;
+            top: -404px;
+            left: -580px;
+            border: none;
+            z-index: 2;
+            opacity: 0;
         }
     </style>
 </head>
