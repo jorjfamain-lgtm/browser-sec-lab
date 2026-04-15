@@ -36,6 +36,17 @@ Route::domain('hackerapp.eitebar.ir')->withoutMiddleware([VulnerableHeadersMiddl
 
 /*
 |--------------------------------------------------------------------------
+|  compromised subdomain (blog.webapp.kr-rezvan.ir)
+|--------------------------------------------------------------------------
+*/
+Route::domain('blog.webapp.kr-rezvan.ir')->group(function () {
+    Route::get('/clickjacking', function () {
+        return view('hacker.samesite-clickjacking');
+    })->name('samesite.clickjacking');
+});
+
+/*
+|--------------------------------------------------------------------------
 | 🛡️ دامنه قربانی (Victim App) : webapp.kr-rezvan.ir
 |--------------------------------------------------------------------------
 | میزبان اطلاعات حساس کاربری که هدف حملات Cross-Origin قرار می‌گیرد.
