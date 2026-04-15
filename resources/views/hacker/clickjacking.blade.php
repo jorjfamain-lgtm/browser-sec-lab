@@ -42,7 +42,7 @@
         /* The malicious iframe loading the victim site */
         .malicious-iframe {
             position: absolute;
-            top: -50px;
+            top: -339px;
             left: 0px;
             width: 100%;
             height: 100%;
