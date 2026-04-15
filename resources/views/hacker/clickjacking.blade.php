@@ -25,8 +25,8 @@
         /* The innocent-looking button the victim wants to click */
         .bait-button {
             position: absolute;
-            top: 200px;  /* Adjust these values to align with the iframe's target button */
-            left: 200px; /* Adjust these values to align with the iframe's target button */
+            top: 319px;
+            left: 292px;
             width: 200px;
             height: 50px;
             background-color: #22c55e;
@@ -36,22 +36,18 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            z-index: 1; /* Stays BEHIND the iframe */
+            z-index: 1;
         }
 
         /* The malicious iframe loading the victim site */
         .malicious-iframe {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: -50px;
+            left: 0px;
             width: 100%;
             height: 100%;
             border: none;
-            z-index: 2; /* Stays ON TOP of the bait button */
-
-            /* IMPORTANT FOR LAB:
-               Keep opacity at 0.4 while aligning the iframe button over the bait button.
-               Once aligned perfectly, change opacity to 0.0001 for the real attack. */
+            z-index: 2;
             opacity: 0.4;
         }
     </style>
