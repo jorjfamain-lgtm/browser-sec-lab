@@ -32,7 +32,7 @@ Route::domain('hackerapp.eitebar.ir')->withoutMiddleware([VulnerableHeadersMiddl
         return view('hacker.clickjacking');
     })->name('hacker.clickjacking');
 
-    // Drive-by Download: Fake Malware Payload
+    // Drive-by Download Payload
     Route::get('/payload.exe', function () {
         $content = "This is a harmless dummy payload simulating malware for the Browser Security Lab.";
         return response($content, 200, [
@@ -45,6 +45,11 @@ Route::domain('hackerapp.eitebar.ir')->withoutMiddleware([VulnerableHeadersMiddl
     Route::get('/drive-by', function () {
         return view('hacker.drive-by');
     })->name('hacker.driveby');
+
+    // Clipboard Abuse Exploit Page
+    Route::get('/clipboard', function () {
+        return view('hacker.clipboard');
+    })->name('hacker.clipboard');
 
 });
 

