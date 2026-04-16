@@ -21,17 +21,7 @@ fi
 echo "[+] Generating App Key..."
 php artisan key:generate --no-interaction
 
-# ۴. پاکسازی node_modules قدیمی
-echo "[+] Cleaning old node_modules..."
-rm -rf node_modules package-lock.json
 
-# ۵. نصب پکیج‌های NPM و بیلد فرانت‌اند
-echo "[+] Installing NPM dependencies..."
-npm config set registry "http://192.168.1.201:8081/repository/npm-group/"
-npm install
-
-echo "[+] Building frontend assets..."
-npm run build
 
 # ۶. آماده‌سازی پایگاه داده
 echo "[+] Running database migrations..."
