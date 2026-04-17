@@ -64,6 +64,11 @@ Route::domain('hackerapp.eitebar.ir')->withoutMiddleware([VulnerableHeadersMiddl
         return view('hacker.cors');
     })->name('hacker.cors');
 
+    // WebRTC IP Leak Exploit Page
+    Route::get('/webrtc-leak', function () {
+        return view('hacker.webrtc');
+    })->name('hacker.webrtc');
+
 });
 
 /*

@@ -33,7 +33,7 @@
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-blue-400">CSRF Attack</h2>
                     <p class="text-gray-400 mt-2 mb-4 h-16">Demonstrate a classic Cross-Site Request Forgery attack using a hidden form.</p>
-                    <a href="https://hackerapp.eitebar.ir/csrf-attack" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                    <a href="http://hackerapp.eitebar.ir/csrf-attack" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
                 </div>
             </div>
 
@@ -42,7 +42,7 @@
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-blue-400">Session Stealer Logs</h2>
                     <p class="text-gray-400 mt-2 mb-4 h-16">View the C2 server logs to see if any cookies or data have been exfiltrated.</p>
-                    <a href="https://hackerapp.eitebar.ir/hacker-panel" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                    <a href="http://hackerapp.eitebar.ir/hacker-panel" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-yellow-400">MitB Simulation</h2>
                     <p class="text-gray-400 mt-2 mb-4 h-16">Simulate a Man-in-the-Browser attack by injecting JS into the login page via DevTools.</p>
-                    <a href="https://webapp.kr-rezvan.ir/login" target="_blank" class="block w-full text-center bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                    <a href="http://webapp.kr-rezvan.ir/login" target="_blank" class="block w-full text-center bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-yellow-400">Clickjacking</h2>
                     <p class="text-gray-400 mt-2 mb-4 h-16">Bypass SameSite=Lax cookie protection using a compromised but same-site subdomain.</p>
-                    <a href="https://blog.webapp.kr-rezvan.ir/clickjacking" target="_blank" class="block w-full text-center bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                    <a href="http://blog.webapp.kr-rezvan.ir/clickjacking" target="_blank" class="block w-full text-center bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
                 </div>
             </div>
 
@@ -69,7 +69,7 @@
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-red-400">Drive-by Download</h2>
                     <p class="text-gray-400 mt-2 mb-4 h-16">Test how browsers handle automatic downloads initiated from a cross-origin iframe.</p>
-                    <a href="https://hackerapp.eitebar.ir/drive-by" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                    <a href="http://hackerapp.eitebar.ir/drive-by" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
                 </div>
             </div>
 
@@ -78,7 +78,7 @@
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-red-400">Clipboard Data Leak</h2>
                     <p class="text-gray-400 mt-2 mb-4 h-16">Explore browser permissions and user gestures required for clipboard access.</p>
-                    <a href="https://hackerapp.eitebar.ir/clipboard" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                    <a href="http://hackerapp.eitebar.ir/clipboard" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
                 </div>
             </div>
 
@@ -96,7 +96,16 @@
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-red-400">CORS & Opaque Responses</h2>
                     <p class="text-gray-400 mt-2 mb-4 h-16">Test how browsers block cross-origin data reads and handle 'no-cors' requests.</p>
-                    <a href="https://hackerapp.eitebar.ir/cors-test" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                    <a href="http://hackerapp.eitebar.ir/cors-test" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                </div>
+            </div>
+
+            <!-- WebRTC IP Leak -->
+            <div class="bg-gray-800 rounded-2xl border border-red-500/30 shadow-lg hover:shadow-red-500/20 transition-shadow duration-300">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-red-400">WebRTC IP Leak</h2>
+                    <p class="text-gray-400 mt-2 mb-4 h-16">Discover real IP addresses bypassing standard proxies via WebRTC STUN negotiation.</p>
+                    <a href="http://hackerapp.eitebar.ir/webrtc-leak" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
                 </div>
             </div>
         </div>
