@@ -58,6 +58,11 @@ Route::domain('hackerapp.eitebar.ir')->withoutMiddleware([VulnerableHeadersMiddl
     Route::get('/fake-login', function () { 
         return view('hacker.fake-login'); 
     })->name('hacker.fake-login');
+    
+    // CORS Test Exploit Page
+    Route::get('/cors-test', function () {
+        return view('hacker.cors');
+    })->name('hacker.cors');
 
 });
 
@@ -95,6 +100,15 @@ Route::domain('webapp.kr-rezvan.ir')
     Route::get('/partners', function () { 
         return view('user.partners'); 
     })->name('user.partners');
+    
+    // Dummy API endpoint simulating sensitive user data (No CORS headers)
+    Route::get('/api/secret-data', function () {
+        return response()->json([
+            'user' => 'admin_rezvan',
+            'balance' => '50,000 USD',
+            'credit_card' => '****-****-****-1234'
+        ]);
+    })->name('user.api.secret');
 
     // ----- بخش‌های محافظت شده با سشن -----
     Route::middleware(['web', 'auth'])->group(function () {

@@ -11,8 +11,8 @@
         <h1 class="text-2xl font-bold mb-6">Our External Partners</h1>
         <p class="mb-4 text-gray-600">Click the links below to visit our partners. Notice the tab behavior.</p>
         <ul class="space-y-4">
-            <li><a href="http://hackerapp.eitebar.ir/tabnab" target="_blank" class="text-blue-600 font-bold hover:underline">1. Partner Link (Default Browser Behavior)</a></li>
-            <li><a href="http://hackerapp.eitebar.ir/tabnab" target="_blank" rel="opener" class="text-red-600 font-bold hover:underline">2. Partner Link (Vulnerable - Explicit Opener)</a></li>
+            <li><a href="https://hackerapp.eitebar.ir/tabnab" target="_blank" class="text-blue-600 font-bold hover:underline">1. Partner Link (Default Browser Behavior)</a></li>
+            <li><a href="https://hackerapp.eitebar.ir/tabnab" target="_blank" rel="opener" class="text-red-600 font-bold hover:underline">2. Partner Link (Vulnerable - Explicit Opener)</a></li>
         </ul>
     </div>
 </body>
