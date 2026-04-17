@@ -108,6 +108,15 @@
                     <a href="http://hackerapp.eitebar.ir/webrtc-leak" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
                 </div>
             </div>
+
+            <!-- Canvas Fingerprinting -->
+            <div class="bg-gray-800 rounded-2xl border border-red-500/30 shadow-lg hover:shadow-red-500/20 transition-shadow duration-300">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-red-400">Canvas Fingerprinting</h2>
+                    <p class="text-gray-400 mt-2 mb-4 h-16">Demonstrate how browsers leak unique hardware and rendering signatures for tracking.</p>
+                    <a href="http://hackerapp.eitebar.ir/fingerprint" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

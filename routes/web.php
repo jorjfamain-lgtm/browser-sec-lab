@@ -69,6 +69,11 @@ Route::domain('hackerapp.eitebar.ir')->withoutMiddleware([VulnerableHeadersMiddl
         return view('hacker.webrtc');
     })->name('hacker.webrtc');
 
+    // Canvas Fingerprinting Exploit Page
+    Route::get('/fingerprint', function () {
+        return view('hacker.fingerprint');
+    })->name('hacker.fingerprint');
+
 });
 
 /*
