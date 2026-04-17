@@ -15,5 +15,8 @@
             <li><a href="https://hackerapp.eitebar.ir/tabnab" target="_blank" rel="opener" class="text-red-600 font-bold hover:underline">2. Partner Link (Vulnerable - Explicit Opener)</a></li>
         </ul>
     </div>
+    <a href="https://webapp.kr-rezvan.ir/labs" style="position: fixed; bottom: 20px; right: 20px; background-color: #3b82f6; color: white; padding: 10px 20px; border-radius: 50px; font-family: sans-serif; text-decoration: none; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 9999; transition: all 0.3s;" onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#3b82f6'">
+        🏠 Back to Lab Directory
+    </a>
 </body>
 </html>

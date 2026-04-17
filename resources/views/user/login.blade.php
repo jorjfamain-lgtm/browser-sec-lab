@@ -55,6 +55,8 @@
             <a href="{{ route('setup.lab') }}" class="text-indigo-600 hover:text-indigo-800 font-medium">کلیک کنید</a>
         </div>
     </div>
-
+    <a href="https://webapp.kr-rezvan.ir/labs" style="position: fixed; bottom: 20px; right: 20px; background-color: #3b82f6; color: white; padding: 10px 20px; border-radius: 50px; font-family: sans-serif; text-decoration: none; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 9999; transition: all 0.3s;" onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#3b82f6'">
+        🏠 Back to Lab Directory
+    </a>
 </body>
 </html>

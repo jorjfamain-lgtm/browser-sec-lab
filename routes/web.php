@@ -110,6 +110,11 @@ Route::domain('webapp.kr-rezvan.ir')
         ]);
     })->name('user.api.secret');
 
+    // Central Lab Directory Route
+    Route::get('/labs', function () {
+        return view('user.lab-directory');
+    })->name('user.labs');
+
     // ----- بخش‌های محافظت شده با سشن -----
     Route::middleware(['web', 'auth'])->group(function () {
 

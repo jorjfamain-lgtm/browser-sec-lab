@@ -72,5 +72,8 @@
         2. Adjust the CSS <code>top</code> and <code>left</code> of the `.bait-button` so it sits perfectly underneath the "Update Email" or "Delete Account" button inside the iframe.<br>
         3. Change <code>opacity: 0.4;</code> to <code>opacity: 0;</code> to finalize the attack.
     </div>
+    <a href="https://webapp.kr-rezvan.ir/labs" style="position: fixed; bottom: 20px; right: 20px; background-color: #3b82f6; color: white; padding: 10px 20px; border-radius: 50px; font-family: sans-serif; text-decoration: none; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 9999; transition: all 0.3s;" onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#3b82f6'">
+        🏠 Back to Lab Directory
+    </a>
 </body>
 </html>
