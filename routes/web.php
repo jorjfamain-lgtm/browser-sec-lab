@@ -79,6 +79,11 @@ Route::domain('hackerapp.eitebar.ir')->withoutMiddleware([VulnerableHeadersMiddl
         return view('hacker.local-scan');
     })->name('hacker.local-scan');
 
+    // Autofill Trap Exploit Page
+    Route::get('/autofill-trap', function () {
+        return view('hacker.autofill');
+    })->name('hacker.autofill');
+
 });
 
 /*
