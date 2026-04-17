@@ -132,7 +132,7 @@
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-red-400">Autofill Trap</h2>
                     <p class="text-gray-400 mt-2 mb-4 h-16">Demonstrate how a malicious site steals sensitive user data by hiding input fields populated by Autofill.</p>
-                    <a href="http://hackerapp.eitebar.ir/autofill-trap" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                    <a href="https://hackerapp.eitebar.ir/autofill-trap" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
                 </div>
             </div>
         </div>
