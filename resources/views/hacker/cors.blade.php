@@ -59,7 +59,7 @@
             out.scrollTop = out.scrollHeight;
         };
 
-        const targetUrl = 'https://webapp.kr-rezvan.ir/api/secret-data';
+        const targetUrl = 'https://webapp.kr-rezvan.ir/internal/secret-data';
 
         document.getElementById('btn-standard').addEventListener('click', async () => {
             log('Starting Standard Fetch...', 'info');
