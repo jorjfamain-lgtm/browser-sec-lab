@@ -83,6 +83,11 @@ Route::domain('hackerapp.eitebar.ir')->withoutMiddleware([VulnerableHeadersMiddl
     Route::get('/autofill-trap', function () {
         return view('hacker.autofill');
     })->name('hacker.autofill');
+    
+    // XS-Leaks Exploit Page
+    Route::get('/xs-leak', function () {
+        return view('hacker.xsleak');
+    })->name('hacker.xsleak');
 
 });
 
@@ -137,6 +142,22 @@ Route::domain('webapp.kr-rezvan.ir')
 
     // ----- بخش‌های محافظت شده با سشن -----
     Route::middleware(['web', 'auth'])->group(function () {
+        
+        // XS-Leak Target API
+        Route::get('/api/private-search', function (Illuminate\Http\Request $request) {
+            $query = strtolower($request->query('q', ''));
+            $privateKeywords = ['confidential', 'admin_rezvan', 'project_x'];
+            
+            if (in_array($query, $privateKeywords)) {
+                // Keyword exists: Simulate DB fetching taking 600ms
+                usleep(600000); 
+            } else {
+                // Keyword missing: Fast return 50ms
+                usleep(50000);
+            }
+            
+            return response()->json(['status' => 'search_complete']);
+        })->name('user.api.search');
 
         // پروفایل کاربر
         Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');

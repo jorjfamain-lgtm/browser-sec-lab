@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <!-- CSRF Attack -->
+            <!-- CSR Attack -->
             <div class="bg-gray-800 rounded-2xl border border-blue-500/30 shadow-lg hover:shadow-blue-500/20 transition-shadow duration-300">
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-blue-400">CSRF Attack</h2>
@@ -132,7 +132,16 @@
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-red-400">Autofill Trap</h2>
                     <p class="text-gray-400 mt-2 mb-4 h-16">Demonstrate how a malicious site steals sensitive user data by hiding input fields populated by Autofill.</p>
-                    <a href="https://hackerapp.eitebar.ir/autofill-trap" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                    <a href="http://hackerapp.eitebar.ir/autofill-trap" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                </div>
+            </div>
+
+            <!-- XS-Leaks -->
+            <div class="bg-gray-800 rounded-2xl border border-red-500/30 shadow-lg hover:shadow-red-500/20 transition-shadow duration-300">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-red-400">XS-Leaks</h2>
+                    <p class="text-gray-400 mt-2 mb-4 h-16">Infer private cross-origin data by measuring network response times.</p>
+                    <a href="http://hackerapp.eitebar.ir/xs-leak" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
                 </div>
             </div>
         </div>
