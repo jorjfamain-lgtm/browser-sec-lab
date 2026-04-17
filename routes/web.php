@@ -102,7 +102,7 @@ Route::domain('webapp.kr-rezvan.ir')
     })->name('user.partners');
     
     // Dummy API endpoint simulating sensitive user data (No CORS headers)
-    Route::get('/api/secret-data', function () {
+    Route::get('/internal/secret-data', function () {
         return response()->json([
             'user' => 'admin_rezvan',
             'balance' => '50,000 USD',
