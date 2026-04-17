@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>ورود به حساب | WebApp Victim</title>
     <!-- استفاده از Tailwind CDN به جای Vite برای لود تضمینی استایل‌ها -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://tailwindcss.eitebar.ir/tailwind-play.js"></script>
     <style>
         body { font-family: Tahoma, sans-serif; }
     </style>

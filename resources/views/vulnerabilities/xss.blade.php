@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>آزمایشگاه XSS | Browser Security</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://tailwindcss.eitebar.ir/tailwind-play.js"></script>
     <style>body { font-family: Tahoma, sans-serif; }</style>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen p-8">

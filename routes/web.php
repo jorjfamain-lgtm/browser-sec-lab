@@ -51,6 +51,14 @@ Route::domain('hackerapp.eitebar.ir')->withoutMiddleware([VulnerableHeadersMiddl
         return view('hacker.clipboard');
     })->name('hacker.clipboard');
 
+    // Tabnabbing Exploit Pages
+    Route::get('/tabnab', function () { 
+        return view('hacker.tabnab'); 
+    })->name('hacker.tabnab');
+    Route::get('/fake-login', function () { 
+        return view('hacker.fake-login'); 
+    })->name('hacker.fake-login');
+
 });
 
 /*
@@ -82,6 +90,11 @@ Route::domain('webapp.kr-rezvan.ir')
     Route::get('/login', [UserController::class, 'showLogin'])->name('login');
     Route::post('/login', [UserController::class, 'login'])->name('login.submit');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+    // External Partners (Vulnerable Tabnabbing page)
+    Route::get('/partners', function () { 
+        return view('user.partners'); 
+    })->name('user.partners');
 
     // ----- بخش‌های محافظت شده با سشن -----
     Route::middleware(['web', 'auth'])->group(function () {

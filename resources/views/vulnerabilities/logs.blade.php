@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Hacker Panel - C2 Server</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://tailwindcss.eitebar.ir/tailwind-play.js"></script>
 </head>
 <body class="bg-black text-green-500 font-mono min-h-screen p-8 selection:bg-green-500 selection:text-black">
     <div class="max-w-5xl mx-auto">
