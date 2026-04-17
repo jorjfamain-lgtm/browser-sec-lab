@@ -73,6 +73,11 @@ Route::domain('hackerapp.eitebar.ir')->withoutMiddleware([VulnerableHeadersMiddl
     Route::get('/fingerprint', function () {
         return view('hacker.fingerprint');
     })->name('hacker.fingerprint');
+    
+    // Local Network Scan Exploit Page
+    Route::get('/local-scan', function () {
+        return view('hacker.local-scan');
+    })->name('hacker.local-scan');
 
 });
 
@@ -123,7 +128,7 @@ Route::domain('webapp.kr-rezvan.ir')
     // Central Lab Directory Route
     Route::get('/labs', function () {
         return view('user.lab-directory');
-    })->name('user.labs');
+    })->withoutMiddleware([VulnerableHeadersMiddleware::class])->name('user.labs');
 
     // ----- بخش‌های محافظت شده با سشن -----
     Route::middleware(['web', 'auth'])->group(function () {

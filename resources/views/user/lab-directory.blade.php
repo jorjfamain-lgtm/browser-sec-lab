@@ -117,6 +117,15 @@
                     <a href="http://hackerapp.eitebar.ir/fingerprint" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
                 </div>
             </div>
+
+            <!-- Local Network Scan -->
+            <div class="bg-gray-800 rounded-2xl border border-red-500/30 shadow-lg hover:shadow-red-500/20 transition-shadow duration-300">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-red-400">Local Network Scan</h2>
+                    <p class="text-gray-400 mt-2 mb-4 h-16">Abuse the browser to scan private network boundaries via timing attacks.</p>
+                    <a href="http://hackerapp.eitebar.ir/local-scan" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Launch Lab</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
