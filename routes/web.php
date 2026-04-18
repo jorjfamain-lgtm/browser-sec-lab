@@ -139,17 +139,13 @@ Route::domain('webapp.kr-rezvan.ir')
     Route::get('/labs', function () {
         return view('user.lab-directory');
     })->withoutMiddleware([VulnerableHeadersMiddleware::class])->name('user.labs');
-
-    // ----- بخش‌های محافظت شده با سشن -----
-    Route::middleware(['web', 'auth'])->group(function () {
-
         Route::get('/api/private-search', function (Illuminate\Http\Request $request) {
             $query = strtolower($request->query('q', ''));
             $privateKeywords = ['confidential', 'admin_panel', 'project_x'];
 
             if (in_array($query, $privateKeywords)) {
                 $hash = 'start';
-                for ($i = 0; $i < 10000000; $i++)
+                for ($i = 0; $i < 100000; $i++)
                 {
                     $hash = md5($hash . $query);
                 }
@@ -161,6 +157,10 @@ Route::domain('webapp.kr-rezvan.ir')
 
             return response()->json(['status' => 'search_complete']);
         })->name('user.api.search');
+        // ----- بخش‌های محافظت شده با سشن -----
+        Route::middleware(['web', 'auth'])->group(function () {
+
+
 
         // پروفایل کاربر
         Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
