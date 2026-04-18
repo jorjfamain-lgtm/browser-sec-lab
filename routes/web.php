@@ -142,20 +142,23 @@ Route::domain('webapp.kr-rezvan.ir')
 
     // ----- بخش‌های محافظت شده با سشن -----
     Route::middleware(['web', 'auth'])->group(function () {
-        
-        // XS-Leak Target API
+
         Route::get('/api/private-search', function (Illuminate\Http\Request $request) {
             $query = strtolower($request->query('q', ''));
-            $privateKeywords = ['confidential', 'admin_rezvan', 'project_x'];
-            
+            $privateKeywords = ['confidential', 'admin_panel', 'project_x'];
+
             if (in_array($query, $privateKeywords)) {
-                // Keyword exists: Simulate DB fetching taking 600ms
-                usleep(600000); 
-            } else {
-                // Keyword missing: Fast return 50ms
-                usleep(50000);
+                $hash = 'start';
+                for ($i = 0; $i < 100000; $i++)
+                {
+                    $hash = md5($hash . $query);
+                }
             }
-            
+            else
+            {
+                $hash = md5($query);
+            }
+
             return response()->json(['status' => 'search_complete']);
         })->name('user.api.search');
 

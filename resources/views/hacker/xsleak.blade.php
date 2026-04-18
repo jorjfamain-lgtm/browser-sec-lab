@@ -88,7 +88,7 @@
         const startBtn = document.getElementById('start-btn');
 
         // Words we want to check against the victim's private database
-        const targetWords = ['guest', 'confidential', 'public', 'project_x', 'random_word', 'admin_rezvan'];
+        const targetWords = ['guest', 'confidential', 'public', 'project_x', 'random_word', 'admin_panel'];
         const THRESHOLD_MS = 400; // If response takes > 400ms, assume the DB did work (HIT)
 
         function log(msg, type = 'info') {
