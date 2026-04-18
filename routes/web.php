@@ -145,7 +145,7 @@ Route::domain('webapp.kr-rezvan.ir')
 
             if (in_array($query, $privateKeywords)) {
                 $hash = 'start';
-                for ($i = 0; $i < 100000; $i++)
+                for ($i = 0; $i < 10000000; $i++)
                 {
                     $hash = md5($hash . $query);
                 }
