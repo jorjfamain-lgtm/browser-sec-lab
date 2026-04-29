@@ -23,8 +23,8 @@ services:
     image: nginx:stable-alpine
     container_name: sec_lab_victim_nginx
     ports:
-      - "58690:80"
-      - "58691:80"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./:/var/www/html:ro
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
